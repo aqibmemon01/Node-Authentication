@@ -27,6 +27,7 @@ class AuthService {
             // Create token
             const token = jsonwebtoken_1.default.sign({
                 business_id: response._id,
+                business_key: response.business_key,
                 email: data.email
             }, "ItsMySecretKey", { expiresIn: "2h" });
             return Object.assign(Object.assign({}, data), { password: null, token });

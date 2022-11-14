@@ -8,6 +8,8 @@ const businessModelScema = new Schema<IRegisterBusiness>({
     address: { type: String, default: null },
     phone: { type: Number, required: true },
     email: { type: String, required: true, unique: true },
-    password: { type: String, required: true }
+    password: { type: String, required: true },
+    server:{ type: String, default: null },
+    business_key:{ type: String, default: null }
 });
 export const BusinessModel = mongoose.model("business", businessModelScema);

@@ -23,8 +23,8 @@ class AuthController {
                     return res.status(400).send("All input is required");
                 }
                 const authService = service_1.default.getInstance();
-                const d = yield authService.registerBusiness(req.body);
-                res.status(200).send(d);
+                const response = yield authService.registerBusiness(req.body);
+                res.status(200).send(response);
             }
             catch (err) {
                 console.log(err);

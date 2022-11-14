@@ -12,6 +12,8 @@ const businessModelScema = new Schema({
     address: { type: String, default: null },
     phone: { type: Number, required: true },
     email: { type: String, required: true, unique: true },
-    password: { type: String, required: true }
+    password: { type: String, required: true },
+    server: { type: String, default: null },
+    business_key: { type: String, default: null }
 });
 exports.BusinessModel = mongoose_1.default.model("business", businessModelScema);

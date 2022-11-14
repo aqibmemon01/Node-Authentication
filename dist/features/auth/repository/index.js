@@ -23,7 +23,9 @@ class AuthRepository {
                     email: email.toLowerCase(),
                     password,
                     address,
-                    phone
+                    phone,
+                    business_key: "",
+                    server: ""
                 });
                 return Business;
             }

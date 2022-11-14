@@ -29,7 +29,9 @@ class AuthRepository implements IAuthRepository {
         email: email.toLowerCase(), // sanitize: convert email to lowercase
         password,
         address,
-        phone
+        phone,
+        business_key:"",
+        server:""
       });
       return Business
     }

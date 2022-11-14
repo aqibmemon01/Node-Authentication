@@ -16,8 +16,8 @@ class AuthController {
       }
 
       const authService = AuthService.getInstance();
-      const d = await authService.registerBusiness(req.body);
-      res.status(200).send(d);
+      const response = await authService.registerBusiness(req.body);
+      res.status(200).send(response);
     }
     catch (err: any) {
       console.log(err)

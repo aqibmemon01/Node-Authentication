@@ -35,6 +35,7 @@ class AuthService implements IAuthService {
     const token = jwt.sign(
       {
         business_id: response._id,
+        business_key: response.business_key,
         email: data.email
       },
       "ItsMySecretKey",
