@@ -10,13 +10,40 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
+const business_1 = require("../model/business");
 class AuthRepository {
     constructor() {
         this.registerBusiness = (data) => __awaiter(this, void 0, void 0, function* () {
+            const { businessName, fullName, address, email, password, phone } = data;
             console.log("Regiser Business Repo Call");
-            return {
-                businessName: "Abc"
-            };
+            try {
+                const Business = yield business_1.BusinessModel.create({
+                    businessName,
+                    fullName,
+                    email: email.toLowerCase(),
+                    password,
+                    address,
+                    phone
+                });
+                return Business;
+            }
+            catch (err) {
+                throw new Error("Error On Business Create " + err);
+            }
+        });
+        this.signIn = (data) => __awaiter(this, void 0, void 0, function* () {
+            const { email, password } = data;
+            console.log("SignIn Repo Call");
+            try {
+                const User = yield business_1.BusinessModel.findOne({ email }).lean();
+                if (!User) {
+                    throw new Error("User Not Found");
+                }
+                return User;
+            }
+            catch (err) {
+                throw new Error("On Business Get =>" + err);
+            }
         });
     }
 }

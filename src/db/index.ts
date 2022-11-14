@@ -1,18 +1,8 @@
-import { PrismaClient } from "@prisma/client";
+import mongoose from 'mongoose';
+import { db_config } from './mongoDB';
 
-class PrismaService {
-  constructor() {}
-
-  private static prismaService: PrismaClient;
-
-  static getInstance = () => {
-    console.log("Prisma Client Initialized");
-    if (this.prismaService !== undefined) {
-      return this.prismaService;
-    }
-    this.prismaService = new PrismaClient();
-    return this.prismaService;
-  };
+export const InitializeDatabase = () => {
+    mongoose.connect(db_config.mongourl).then((data) => {
+        console.log('MongoDB Connected...')
+    }).catch((err: String) => console.log(err));
 }
-
-export default PrismaService;

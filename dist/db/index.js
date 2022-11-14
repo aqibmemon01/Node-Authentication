@@ -1,17 +1,14 @@
 "use strict";
-var _a;
-Object.defineProperty(exports, "__esModule", { value: true });
-const client_1 = require("@prisma/client");
-class PrismaService {
-    constructor() { }
-}
-_a = PrismaService;
-PrismaService.getInstance = () => {
-    console.log("Prisma Client Initialized");
-    if (_a.prismaService !== undefined) {
-        return _a.prismaService;
-    }
-    _a.prismaService = new client_1.PrismaClient();
-    return _a.prismaService;
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-exports.default = PrismaService;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.InitializeDatabase = void 0;
+const mongoose_1 = __importDefault(require("mongoose"));
+const mongoDB_1 = require("./mongoDB");
+const InitializeDatabase = () => {
+    mongoose_1.default.connect(mongoDB_1.db_config.mongourl).then((data) => {
+        console.log('MongoDB Connected...');
+    }).catch((err) => console.log(err));
+};
+exports.InitializeDatabase = InitializeDatabase;

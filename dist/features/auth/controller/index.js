@@ -16,9 +16,42 @@ const service_1 = __importDefault(require("../service"));
 class AuthController {
     constructor() {
         this.registerBusiness = (req, res) => __awaiter(this, void 0, void 0, function* () {
-            const authService = service_1.default.getInstance();
-            const d = yield authService.registerBusiness(req.body);
-            res.status(200).send(d);
+            try {
+                const { businessName, fullName, address, phone, email, password } = req.body;
+                // Validate Fields
+                if (!(email && password && businessName && fullName && phone)) {
+                    return res.status(400).send("All input is required");
+                }
+                const authService = service_1.default.getInstance();
+                const d = yield authService.registerBusiness(req.body);
+                res.status(200).send(d);
+            }
+            catch (err) {
+                console.log(err);
+                return res.status(409).send({
+                    status: false,
+                    error: "Something went wrong " + err
+                });
+            }
+        });
+        this.signIn = (req, res) => __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { email, password } = req.body;
+                // Validate Fields
+                if (!(email && password)) {
+                    return res.status(400).send("All input is required");
+                }
+                const authService = service_1.default.getInstance();
+                const d = yield authService.signIn(req.body);
+                res.status(200).send(d);
+            }
+            catch (err) {
+                console.log(err);
+                return res.status(409).send({
+                    status: false,
+                    error: "Error: " + err
+                });
+            }
         });
         console.log("Auth Controller Initialized");
     }
