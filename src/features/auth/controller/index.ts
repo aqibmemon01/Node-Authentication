@@ -9,9 +9,9 @@ class AuthController {
 
   registerBusiness = async (req: Request, res: Response) => {
     try {
-      const { businessName, fullName, address, phone, email, password } = req.body;
+      const { email, password } = req.body;
       // Validate Fields
-      if (!(email && password && businessName && fullName && phone)) {
+      if (!(email && password)) {
         return res.status(400).send("All input is required");
       }
 
