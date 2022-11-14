@@ -17,12 +17,40 @@
   "securityDefinitions": {},
   "paths": {
     "/register": {
-      "get": {
+      "post": {
         "tags": [
           "Auth"
         ],
         "description": "",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "businessName": {
+                  "example": "any"
+                },
+                "fullName": {
+                  "example": "any"
+                },
+                "address": {
+                  "example": "any"
+                },
+                "phone": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
         "responses": {}
       }
     }
